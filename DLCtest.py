@@ -82,8 +82,8 @@ def DLC_analyze_single():
 
     deeplabcut.analyze_videos(configpath, videolist, save_as_csv=True)
     deeplabcut.filterpredictions(configpath, videolist, save_as_csv=True)
-    #deeplabcut.create_labeled_video(configpath, videolist,filtered=True)
-    deeplabcut.create_labeled_video(configpath, videolist, filtered=False)
+    deeplabcut.create_labeled_video(configpath, videolist,filtered=True)
+    #deeplabcut.create_labeled_video(configpath, videolist, filtered=False)
     deeplabcut.plot_trajectories(configpath, videolist, filtered=True, showfigures=True,
                                  displayedbodyparts=['snout', 'centre', 'tailbase'])  # this will plot the trajectories
 
