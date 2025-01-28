@@ -1,6 +1,7 @@
 
 *.iml
 *.xml
+*.checkpoint.ipynb
 .idea/vcs.xml
 .idea/misc.xml
 .idea/Scripts.iml
@@ -13,3 +14,7 @@ CatGT.log
 .idea/Scripts.iml
 .idea/vcs.xml
 CatGT.log
+.ipynb_checkpoints/AddingCircleToOF-checkpoint.ipynb
+.ipynb_checkpoints/readNpyFiles-checkpoint.ipynb
+.ipynb_checkpoints/TestROIlocation_video-checkpoint.ipynb
+.ipynb_checkpoints/videoFuncMac-checkpoint.ipynb
