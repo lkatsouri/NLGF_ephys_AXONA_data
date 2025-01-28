@@ -67,7 +67,7 @@ def DLC_trainmodel(configpath, multi=False, saveiters=10000,
 
     deeplabcut.train_network(configpath, max_snapshots_to_keep=None, saveiters=saveiters, maxiters=maxiters,
                              keepdeconvweights=False)  # this will save all snapshots, change to ANy for n=5 or write any integer
-    deeplabcut.evaluate_network(configpath, plotting=False)
+    deeplabcut.evaluate_network(configpath, plotting=True)
 
 
 def DLC_analyze_single():

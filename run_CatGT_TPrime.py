@@ -5,7 +5,7 @@ import time
 import numpy as np
 
 
-def main(basefolder, tprimesavefolder, runcatGT=True, runsupercat=True, runtprime=False, prbnum='0', sync='NI'):
+def main(basefolder, tprimesavefolder, runcatGT=True, runsupercat=True, runtprime=False, prbnum='0', sync='NI'): #NI sync for Lennart's and Cristina's recordings that the pulse is recorded and also given to
     supercatcmd = catgt(basefolder, runcatGT=runcatGT, prbnum=prbnum, sync=sync)
     supercat(basefolder, supercatcmd, runsupercat=runsupercat, prbnum=prbnum)
 
@@ -83,4 +83,4 @@ def tprime(basefolder, savefolder, runtprime=True, runsupercat=True, prbnum='0')
 basefolder = 'C:/Users/Loukia/Documents/Ephys/Recordings/M1123843/20241029/LinearTrack'
 tprimesavefolder = 'nan'
 
-main(basefolder, tprimesavefolder, runcatGT=True, runsupercat=True, runtprime=False, sync='imec')
+main(basefolder, tprimesavefolder, runcatGT=True, runsupercat=True, runtprime=False, sync='imec') #my syncing is through imec as my NI box is sending pulse directly there and to Labview
