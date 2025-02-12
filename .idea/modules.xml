@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$USER_HOME$/Github/ALZmouseanalysis/.idea/ALZmouseanalysis.iml" filepath="$USER_HOME$/Github/ALZmouseanalysis/.idea/ALZmouseanalysis.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Scripts.iml" filepath="$PROJECT_DIR$/.idea/Scripts.iml" />
+      <module fileurl="file://$USER_HOME$/.idea/loukia.iml" filepath="$USER_HOME$/.idea/loukia.iml" />
     </modules>
   </component>
 </project>

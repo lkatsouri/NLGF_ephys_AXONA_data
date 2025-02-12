@@ -3,7 +3,7 @@
   <component name="Black">
     <option name="sdkName" value="DEEPLABCUT" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="jupyter" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="scripts" project-jdk-type="Python SDK" />
   <component name="PyCharmDSProjectLayout">
     <option name="id" value="JupyterRightHiddenStructureLayout" />
   </component>

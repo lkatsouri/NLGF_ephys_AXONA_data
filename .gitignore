@@ -18,3 +18,5 @@ CatGT.log
 .ipynb_checkpoints/readNpyFiles-checkpoint.ipynb
 .ipynb_checkpoints/TestROIlocation_video-checkpoint.ipynb
 .ipynb_checkpoints/videoFuncMac-checkpoint.ipynb
+*.xml
+*.iml
