@@ -1,15 +1,19 @@
 # Python file here: run deeplabcut to train model. 
 
 import deeplabcut
+<<<<<<< Updated upstream
 import glob
 import os
+=======
+config_path = r"C:\Users\Loukia\Documents\KarensLoc-Angela-2024-12-11\config.yaml"
+>>>>>>> Stashed changes
 
 config_path = r"G:\DLCOutputData\Object_experiments\Karen_Loc_Pytorch-Angela-2025-05-27\config.yaml"
 
 # deeplabcut.dropimagesduetolackofannotation(config_path)
 
 # Make sure the training set has been created properly:
-deeplabcut.convertcsv2h5(config_path, userfeedback=False, scorer='MargotTirole') # if .H5 file was not created
+deeplabcut.convertcsv2h5(config_path, userfeedback=False, scorer='Angela') # if .H5 file was not created
 print("CSVToH5Done")
 
 deeplabcut.check_labels(config_path, visualizeindividuals=False) # Good practice to run first
