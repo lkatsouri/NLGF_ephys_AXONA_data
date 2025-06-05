@@ -2,8 +2,12 @@
 
 import deeplabcut
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import glob
 import os
+=======
+config_path = r"C:\Users\Loukia\Documents\KarensLoc-Angela-2024-12-11\config.yaml"
+>>>>>>> Stashed changes
 =======
 config_path = r"C:\Users\Loukia\Documents\KarensLoc-Angela-2024-12-11\config.yaml"
 >>>>>>> Stashed changes
