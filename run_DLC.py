@@ -30,30 +30,25 @@ deeplabcut.extract_save_all_maps(config_path, shuffle=1)
 print("NetworkEvaluated")
 
 #path to the video folder
-video_folder= r'G:\DLCOutputData\Object_experiments\Karen_Loc_Pytorch-Angela-2025-05-27\videos\test'
+video_folder= r'G:\DLCOutputData\Object_experiments\Karen_Loc_Pytorch-Angela-2025-05-27\videos'
 
 #files in the folder
-video_list = glob.glob(os.path.join(video_folder, '*.mp4'))
+video_list = glob.glob(os.path.join(video_folder, '*cropped.mp4'))
 print(len(video_list))
 
 
 for file_to_analyse in video_list:
-    deeplabcut.analyze_videos(config_path, [file_to_analyse], save_as_csv=True, gputouse=0)
-
+    # deeplabcut.analyze_videos(config_path, [file_to_analyse], save_as_csv=True, gputouse=0)
     #
-    # # filter trajectories
-    deeplabcut.filterpredictions(config_path, [file_to_analyse], shuffle=1, filtertype='arima', p_bound=0.01, ARdegree=3, MAdegree=1, alpha=0.01)
-    print("VideoFiltered")
+    # #
+    # # # filter trajectories
+    # deeplabcut.filterpredictions(config_path, [file_to_analyse], shuffle=1, filtertype='arima', p_bound=0.01, ARdegree=3, MAdegree=1, alpha=0.01)
+    # print("VideoFiltered")
+    #
+    # # plot trajectories
+    # deeplabcut.plot_trajectories(config_path,[file_to_analyse],shuffle=1,displayedbodyparts= ['snout','left_ear','right_ear','centre','lateral_left','lateral_right','tailbase','tail_end']) # filtered=True,
 
-    # plot trajectories
-    deeplabcut.plot_trajectories(config_path,[file_to_analyse],shuffle=1,displayedbodyparts= ['snout','left_ear','right_ear','centre','lateral_left','lateral_right','tailbase','tail_end']) # filtered=True,
+    #create labeled videos
+    deeplabcut.create_labeled_video(config_path, [file_to_analyse], videotype='.mp4', save_frames=False, draw_skeleton=True, filtered= False)
 
-    # create labeled videos
-    # deeplabcut.create_labeled_video(config_path, [file_to_analyse], videotype='.mp4', save_frames=True,
-    # 						 displayedbodyparts= ['nose','leftEar','rightEar','neck','body1','body2','body3','tailBase',
-    # 						 'leftLightOn','rightLightOn','leftPortScrew','rightPortScrew','odorPort','leftEdgeWell',
-    # 						 'leftWell','midEdgeWell','rightWell','rightEdgeWell'], draw_skeleton=True) #, filtered= True
-    # 						 # draw_skeleton=True, trailpoints=0, filtered= False,
-
-    deeplabcut.create_labeled_video(config_path, [file_to_analyse], videotype='.mp4', save_frames=False, draw_skeleton=True, filtered= True)
     print(f"{file_to_analyse} Analysed! Yay!")
