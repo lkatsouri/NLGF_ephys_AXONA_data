@@ -2,6 +2,36 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$USER_HOME$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../ALZmouseanalysis" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../BehaviouralCode" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../DLCutils" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../Ephys" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../KiloSort" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../NeuroInformaticsCourses/behav-course-2023/behav-analysis-course" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../NeuroInformaticsCourses/course-behavioural-analysis-2023" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../NeuroInformaticsCourses/swc-timeseries-analysis-course-2023" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../ObjectExplorationAnalysis" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../PystartersCourses/planets" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../PystartersCourses/pystarters-assignments" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../PystartersCourses/pystarters2019" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../PystartersCourses/scientific_plotting_tutorial" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../acquisition_basler_okeefe" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../behaviour_analysis" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../git_intermediate_registration" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../linux_cli_intro" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../phy" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../phy-contrib" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../smart-kages-movement" vcs="Git" />
+    <mapping directory="$USER_HOME$/Documents/DeepLabCut" vcs="Git" />
+    <mapping directory="$USER_HOME$/Documents/pystarters" vcs="Git" />
+    <mapping directory="$USER_HOME$/Downloads/DeepLabCut" vcs="Git" />
+    <mapping directory="$USER_HOME$/Library/Application Support/JetBrains/PyCharm2022.3/settingsSync" vcs="Git" />
+    <mapping directory="$USER_HOME$/Library/Application Support/JetBrains/PyCharm2023.3/settingsSync" vcs="Git" />
+    <mapping directory="$APPLICATION_CONFIG_DIR$/settingsSync" vcs="Git" />
+    <mapping directory="$USER_HOME$/Library/CloudStorage/OneDrive-UniversityCollegeLondon/OneDrive - University College London 1/amygdala_electrophys" vcs="Git" />
+    <mapping directory="$USER_HOME$/UCL Dropbox/Loukia Katsouri/CODE from collaborators/KiloSort" vcs="Git" />
+    <mapping directory="$USER_HOME$/UCL Dropbox/Loukia Katsouri/PycharmProjects" vcs="Git" />
   </component>
 </project>
