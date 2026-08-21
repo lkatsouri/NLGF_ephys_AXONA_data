@@ -75,11 +75,19 @@ STAR Methods and abstract), 8 main figures + 6 supplementary figures. See
 | `ephys_phase_circular_analysis.ipynb` | Circular statistics on theta phase locking (pycircstat2, custom Watson U² fix) |
 | `ephys_LinearTrack_analysis.ipynb` | Linear-track firing analysis (non-phase-precession metrics) |
 | `ephys_confound_testing_glmm.ipynb` | Confound modeling (Experimenter / Age_weeks), core GLMM pipeline |
+| `ephys_PAC_single_trials.ipynb` | Per-trial PAC/oscillatory-event metrics (normality checks, GEE) — separate from the comodulogram notebook |
+| `ephys_openField_qc.ipynb` | Open-field QC: per-mouse summary tables, missingness/duplicate/outlier checks, Excel→Parquet caching |
 | `neuron_manuscript_outline.md` | Section-by-section word allocation and figure mapping for the *Neuron* submission |
 | `concatenated_trials.csv` | Per-cell/per-trial master dataset (1,838 rows × 36 cols) — spatial coding, theta modulation, PAC-adjacent per-cell metrics |
 | `concatenated_phase_precession.csv` | Phase precession fits, per cell/direction (330 rows × 15 cols) — currently pseudoreplicated at the trial level, not animal-resolved |
 | `concatenated_lfp_stats.csv` | Session-level LFP/PAC summary stats (34 rows × 21 cols) |
 | `AllFiguresTogether.pdf` | Current compiled figure set (8 main + 6 supplementary) |
+
+**⚠️ These data files are not in this git repo.** Notebooks load them via
+hardcoded absolute paths into a Dropbox directory (e.g.
+`.../Dropbox-UCL/Loukia Katsouri/DataProtocolsEquipment/Ephys_Analysis/RobinData/Analysis/...`),
+not a repo-relative path. Before editing a load cell, check the path in that
+specific notebook rather than assuming it matches another notebook's convention.
 
 ---
 
@@ -151,6 +159,10 @@ user.
 
 ## 6. Tooling & Environment
 
+- **No build, lint, or test suite.** There's no `requirements.txt`,
+  `environment.yml`, or CI config in this repo — work happens by running cells
+  in Jupyter directly. R runs inline per-cell through the `rpy2` bridge rather
+  than as standalone scripts, so there is no separate R invocation to run.
 - **Languages:** Python (Jupyter notebooks) + R via `rpy2` bridge.
 - **R packages:** `glmmTMB`, `emmeans`, `DHARMa`, `afex`, `lmerTest`, `car`, `brms`,
   `cmdstanr`.
