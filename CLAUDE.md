@@ -77,6 +77,7 @@ STAR Methods and abstract), 8 main figures + 6 supplementary figures. See
 | `ephys_confound_testing_glmm.ipynb` | Confound modeling (Experimenter / Age_weeks), core GLMM pipeline |
 | `ephys_PAC_single_trials.ipynb` | Per-trial PAC/oscillatory-event metrics (normality checks, GEE) — separate from the comodulogram notebook |
 | `ephys_openField_qc.ipynb` | Open-field QC: per-mouse summary tables, missingness/duplicate/outlier checks, Excel→Parquet caching |
+| `figure_style.py` | Shared matplotlib/seaborn styling (rcParams, WT/NLGF colors, `set_panel_title`) — see Section 6 |
 | `neuron_manuscript_outline.md` | Section-by-section word allocation and figure mapping for the *Neuron* submission |
 | `concatenated_trials.csv` | Per-cell/per-trial master dataset (1,838 rows × 36 cols) — spatial coding, theta modulation, PAC-adjacent per-cell metrics |
 | `concatenated_phase_precession.csv` | Phase precession fits, per cell/direction (330 rows × 15 cols) — currently pseudoreplicated at the trial level, not animal-resolved |
@@ -173,6 +174,16 @@ user.
 - **Plotting:** Save outputs as PDF with `pdf.fonttype: 42` for Illustrator
   compatibility. Colors: WT = `#5B8DB8` (steel blue), NLGF = `#E07B54` (orange). WT
   is always ordered first on axes.
+- **Shared figure styling (`figure_style.py`):** All rcParams, WT/NLGF color
+  constants, and the bold panel-title style live in this one repo-root module —
+  not repeated inline per notebook. New notebooks or figure scripts should import
+  it and call `apply_style()` near the top of the import cell, **after** any
+  `sns.set_theme()`/`sns.set_style()` call (seaborn's theme is what overrides these
+  rcParams, so it must go second — and call `apply_style()` again after any later
+  `sns.set_theme()` call in the same notebook, since each call re-applies seaborn's
+  own defaults). Use `set_panel_title(ax, label)` for panel titles instead of
+  inline `fontsize=`/`fontweight=` args. Do not reintroduce ad hoc rcParams
+  blocks, hardcoded WT/NLGF hex codes, or inline bold-title styling.
 - **Key references:** Skaggs et al. (1996, *Hippocampus*) — adaptive binning;
   Guardamagna et al. (2023, *Cell Reports*) — Theta Score for
   phase-precessing/phase-locked classification; Tort et al. (2010) — KL-divergence
@@ -185,6 +196,41 @@ user.
 *(Newest entries at the top. See Section 1 for the format and rules.)*
 
 <!-- Add new entries below this line. -->
+- [2026-08-22] **Centralized figure styling into `figure_style.py`**: Replaced
+  inline `rcParams.update(...)` blocks, hardcoded WT/NLGF hex codes, and bold
+  `ax.set_title(..., fontsize=7, fontweight="bold")` calls across
+  `ephys_PAC_comodulograms.ipynb`, `ephys_LT_PhasePrecession.ipynb`,
+  `ephys_phase_circular_analysis.ipynb`, `ephys_openField_analysis.ipynb`,
+  `ephys_LinearTrack_analysis.ipynb`, and (added in a follow-up pass)
+  `ephys_PAC_single_trials.ipynb` with `apply_style()`/`set_panel_title()` from the
+  new root-level module (see Section 6). `ephys_confound_testing_glmm.ipynb` and
+  `ephys_openField_qc.ipynb` were checked and had no matching inline styling
+  (the latter is QC/tables, not figures) and were left untouched.
+- [2026-08-22] **Pre-existing rcParams drift was real, not copy-paste-identical**:
+  Before centralizing, the same "publication style" block existed in at least 7
+  distinct variants across notebooks (`font.size` values of 6/7/8, `axes.titlesize`
+  6/7/8/9, inconsistent `ytick.direction`/`axes.grid` keys), and bold-title calls
+  ranged from fontsize 6–10 (one pair carried an unsupported `pad=14` kwarg). All
+  were normalized to the single 6pt spec in `figure_style.py` at the user's explicit
+  request, which will visibly change font sizes on any figure PDF regenerated from
+  these notebooks going forward — regenerate and spot-check exports before treating
+  old and new PDFs as equivalent.
+- [2026-08-22] **`ephys_LinearTrack_analysis.ipynb` cell had a genuine cross-notebook
+  discrepancy, now resolved by normalization**: its per-cell-type violin title used
+  `fontsize=6, fontweight="normal"` while the equivalent cell in
+  `ephys_openField_analysis.ipynb` used `fontsize=7, fontweight="bold"` — same plot
+  type, different styling between the twin notebooks. Both now use the shared
+  `set_panel_title()` (bold, 7pt), so the linear-track version's panel titles are
+  now bold where they previously were not.
+- [2026-08-22] **Read/NotebookEdit tools can't load these notebooks directly**:
+  Several notebooks (e.g. `ephys_PAC_comodulograms.ipynb`) embed large base64 plot
+  outputs that push the file past the tool's read size limit, so `Read`/`NotebookEdit`
+  fail outright rather than truncating. Edits in this session were made by
+  reading/writing the `.ipynb` JSON directly in Python instead (`json.load`, edit
+  `cell['source']`, `json.dump(..., indent=1, sort_keys=True, ensure_ascii=False)`
+  to match nbformat's own serialization exactly — `ensure_ascii=True` corrupts every
+  pre-existing non-ASCII character, e.g. em-dashes, in a full-file diff). Prefer this
+  approach over `Read`/`NotebookEdit` for any notebook with substantial saved output.
 - [2026-08-22] **Spatial-cell GLMM result (open field)**: Binomial GLMM
   (`is_spatial ~ Genotype + (1|mouse_name)`, fit separately per cell type)
   shows NLGF Pyramidal cells significantly less likely to be spatial than WT
