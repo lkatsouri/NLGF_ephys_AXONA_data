@@ -185,6 +185,25 @@ user.
 *(Newest entries at the top. See Section 1 for the format and rules.)*
 
 <!-- Add new entries below this line. -->
+- [2026-08-22] **Spatial-cell GLMM result (open field)**: Binomial GLMM
+  (`is_spatial ~ Genotype + (1|mouse_name)`, fit separately per cell type)
+  shows NLGF Pyramidal cells significantly less likely to be spatial than WT
+  (OR=0.347, p=0.020, n=719 cells/17 mice); Interneurons show the same
+  direction but are not significant (OR=0.570, p=0.283, n=359 cells/17 mice).
+  Not yet cross-checked against the median-based permutation test that
+  Section 5 calls for as the robustness comparison — treat the Pyramidal
+  result as preliminary until that check is run, since the notebook's own
+  permutation-test cell flags an outlier NLGF mouse (1117201, 90% spatial)
+  that drives the mean-based version of this same comparison.
+- [2026-08-22] **Notebook kernel is missing packages needed to execute it**:
+  `ephys_openField_analysis.ipynb` is registered against
+  `/Users/loukia/miniconda3/bin/python` (base conda env), which lacks
+  `seaborn` and `rpy2` — cells fail on import. The `scripts`, `scripts313`,
+  and `RFCenv` conda envs all have both installed and point rpy2 at the same
+  system R (`/Library/Frameworks/R.framework/Resources`, where `glmmTMB`
+  works despite a TMB version-mismatch warning). Use one of those envs to
+  actually run notebook code from the command line; don't assume the base
+  env works.
 
 ---
 
