@@ -196,6 +196,41 @@ user.
 *(Newest entries at the top. See Section 1 for the format and rules.)*
 
 <!-- Add new entries below this line. -->
+- [2026-08-22] **Same spike_width/kl_spatial_sparsity/num_spikes/theta_mod_v3 pipeline
+  applied to the twin `ephys_LinearTrack_analysis.ipynb`**: Its version of this
+  section (`# Spike width, kl_spatial_sparsity and theta_modulation_v3 analysis`)
+  never had the pooled-cell-type ad hoc Shapiro block that `ephys_openField_analysis.ipynb`
+  had, so nothing to remove there. `kl_spatial_sparsity` is confirmed animal-level
+  in the linear-track data too (identical per-mouse value across Pyramidal/
+  Interneuron rows, diff ~1e-16) — same `cell_type='all'` fix applied. One result
+  differs meaningfully from open field: `num_spikes` for Pyramidal cells fails
+  normality in linear track (NLGF Shapiro p=0.0007) and correctly routes to
+  Mann-Whitney U + median permutation there, while in open field all four
+  spike_width/kl_spatial_sparsity/num_spikes combinations were normal — normality
+  is environment-specific, don't assume open-field and linear-track share a
+  branch (t-test vs MWU) for the same metric.
+- [2026-08-22] **Rebuilt the spike_width/kl_spatial_sparsity/num_spikes/theta_mod_v3
+  section of `ephys_openField_analysis.ipynb` as a normality → Levene's →
+  test → box plot → permutation pipeline (animal-level throughout)**: Two
+  corrections surfaced while doing this. (1) The pre-existing ad hoc Shapiro
+  check for spike_width pooled Pyramidal and Interneuron together before
+  testing normality per genotype — since the two cell types are, by
+  construction, non-overlapping populations (mean spike width ≈475 vs ≈191),
+  this pooling produced an artificial bimodal mixture that failed
+  Shapiro-Wilk (WT p=0.0020, NLGF p=0.0007). Tested separately per cell type,
+  as the rest of the notebook already does, spike_width is normal in all four
+  genotype × cell_type combinations (p=0.14–0.86) — the new pipeline uses the
+  per-cell-type result and removed the pooled ad hoc block. (2)
+  `kl_spatial_sparsity` is a single animal-level value, identical across a
+  mouse's Pyramidal and Interneuron rows (confirmed: identical Shapiro p per
+  genotype under both cell types) — unlike the other three metrics, which are
+  genuinely per-cell. The pipeline now tests/plots it once per animal ×
+  environment (`cell_type='all'`) instead of duplicating the same test across
+  both cell types. General takeaway for any future per-cell-type normality
+  check in this codebase: always split by cell type before testing normality
+  — a metric that differs systematically between Pyramidal and Interneuron
+  cells will look non-normal when pooled even if it's normal within each
+  cell type.
 - [2026-08-22] **Centralized figure styling into `figure_style.py`**: Replaced
   inline `rcParams.update(...)` blocks, hardcoded WT/NLGF hex codes, and bold
   `ax.set_title(..., fontsize=7, fontweight="bold")` calls across
