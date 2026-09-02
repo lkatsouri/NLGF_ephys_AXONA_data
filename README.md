@@ -22,7 +22,6 @@ Scale: ~1,800 neurons across ~17 animals.
 | `ephys_PAC_single_trials.ipynb` | Per-trial PAC/oscillatory-event metrics (normality checks, GEE) |
 | `ephys_openField_qc.ipynb` | Open-field QC: per-mouse summary tables, missingness/duplicate/outlier checks, Excel→Parquet caching |
 | `figure_style.py` | Shared matplotlib/seaborn styling (rcParams, WT/NLGF colors, `set_panel_title`) — import and call `apply_style()` in any new notebook |
-| `neuron_manuscript_outline.md` | Section-by-section word allocation and figure mapping for the *Neuron* submission |
 | `CLAUDE.md` | Analysis conventions, data dictionary, and session history for AI-assisted work in this repo |
 
 ## Data
